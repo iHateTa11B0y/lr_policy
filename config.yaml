@@ -1,3 +1,14 @@
+#--------------------------------------------------------------------------------
+# > Intros:
+#   config file for LrPolicy.
+# > Params:
+#   SGDR.TMUL:           cycle multiply factor
+#   SGDR.RESTART_TIMES:  restart times for sgdr
+#   SGDR.LR_MIN_RATIO:   lr_min = LR_MIN_RATIO * BASE_LR
+#   STEP.DECAY_RATIO     lr_new = DECAY_RATIO * lr_previous every STEP_SIZE iters
+#   STEP.STEP_SIZE       unit: iteration
+#--------------------------------------------------------------------------------
+
 BASE_LR: 0.02
 MAX_ITER: 10000
 

@@ -1,9 +1,43 @@
+#------------------------------------------------------------------------
+# > Intros:
+# This is the implementation of LR policies, including 'SGDR' and 'step 
+# with decay'. 
+#
+# For more details about 'SGDR', here is a reference:
+# SGDR: Stochastic Gradient Descent with Warm Restarts
+# [https://arxiv.org/abs/1608.03983]
+#
+# > Author: Wenhao Niu
+# > Date: Aug 26, 2018
+#------------------------------------------------------------------------
+
+
 import yaml
 import numpy as np
 
 
 class LrPolicy(object):
-    
+    '''
+    > Intros:
+    ---------------------------------------------------------------------------------
+    This is a class of LR policies, you can choose either 'SGDR' or 'step with decay'
+    by setting proper params.
+
+    > Args:
+    ---------------------------------------------------------------------------------
+    policy:       Poloicy name. You can choose either 'sgdr' or 'step'. Inputs beyond 
+                  these two words would raise error.
+    max_iter:     Maximum iterations of your training. You can either preset in the 
+                  config file or set when initializing `LrPolicy` objects.
+
+    For more info of parameters, you can read reference paper or check config file.
+
+    > Example:
+    ---------------------------------------------------------------------------------
+    >>> LR = LrPolicy('sgdr',max_iter)
+    >>> [training Loop]:
+    >>>     cur_lr = LR.get_lr_at_iter(cur_iter)
+    '''
     def __init__(self, policy, max_iter=None):
 
         with open('config.yaml','r') as f:
